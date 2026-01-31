@@ -7,28 +7,47 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/font/lucide.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body class="font-sans antialiased" style="height: auto; min-height: 100%;">
     <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center space-x-2 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                     <i class="lucide lucide-heart text-rose-600 text-2xl"></i>
                     <span class="text-xl font-bold text-gray-900">BiodataMatch</span>
                 </div>
+
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#templatesAll" class="text-gray-700 hover:text-rose-600 transition">Templates</a>
                     <a href="#how-it-works" class="text-gray-700 hover:text-rose-600 transition">How It Works</a>
                     <a href="#testimonials" class="text-gray-700 hover:text-rose-600 transition">Testimonials</a>
                     <a href="#pricing" class="text-gray-700 hover:text-rose-600 transition">Pricing</a>
                 </div>
+
                 <div class="flex items-center space-x-4">
                     <button class="hidden sm:block text-gray-700 hover:text-rose-600 transition font-medium">Sign In</button>
                     <button class="bg-rose-600 text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-rose-700 transition font-medium">Get Started</button>
+                    
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-gray-600 hover:text-rose-600 p-2 outline-none">
+                        <i id="menuIcon" class="fa-solid fa-bars text-2xl"></i>
+                    </button>
                 </div>
             </div>
         </div>
-    </nav>
+
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 animate-in slide-in-from-top duration-300">
+        <div class="px-4 pt-2 pb-6 space-y-2 shadow-xl">
+            <a href="#templatesAll" onclick="toggleMobileMenu()" class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-rose-50 hover:text-rose-600 rounded-lg">Templates</a>
+            <a href="#how-it-works" onclick="toggleMobileMenu()" class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-rose-50 hover:text-rose-600 rounded-lg">How It Works</a>
+            <a href="#testimonials" onclick="toggleMobileMenu()" class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-rose-50 hover:text-rose-600 rounded-lg">Testimonials</a>
+            <a href="#pricing" onclick="toggleMobileMenu()" class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-rose-50 hover:text-rose-600 rounded-lg">Pricing</a>
+            <div class="pt-4 border-t border-gray-100">
+                <button class="w-full text-center py-3 text-rose-600 font-bold">Sign In</button>
+            </div>
+        </div>
+    </div>
+</nav>
 
     <section class="bg-gradient-to-br from-rose-50 to-pink-50 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,6 +90,86 @@
                 </div>
             </div>
         </div>
+        <!-- carousel scroller -->
+    </section>
+        <div class="px-4 md:px-8 py-12">
+     <div class="mb-8 text-center">
+      <h3 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-2">Featured Templates</h3>
+      <p class="text-gray-600">Explore our most popular marriage biodata templates</p>
+     </div><!-- Carousel Container -->
+     <div class="relative"><!-- Left Arrow --> <button id="carousel-prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-6 z-10 p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-all hover:scale-110 group">
+       <svg class="w-6 h-6 text-[#e94560] group-hover:text-[#ff6b6b]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+       </svg></button> <!-- Carousel Wrapper -->
+      <div class="overflow-hidden">
+       <div id="carousel-track" class="flex transition-transform duration-500 ease-out gap-6">
+        <!-- Template 1 -->
+        <div class="carousel-card flex-shrink-0 w-60 group cursor-pointer">
+         <div class="h-80 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:scale-105 relative bg-white border border-gray-200"><img src="t_A.jpg" alt="Classic Elegant Template" loading="lazy" class="w-full h-full object-cover" onerror="this.style.background='linear-gradient(135deg, #e94560 0%, #ff6b6b 100%)'; this.alt='Image unavailable';">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><button class="bg-white text-gray-900 px-6 py-2.5 rounded-full font-semibold hover:bg-gray-100 transition-colors template-select" data-template="classic">Select</button>
+          </div>
+         </div>
+        </div><!-- Template 2 -->
+        <div class="carousel-card flex-shrink-0 w-60 group cursor-pointer">
+         <div class="h-80 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:scale-105 relative bg-white border border-gray-200"><img src="t_B.jpg" alt="Modern Minimal Template" loading="lazy" class="w-full h-full object-cover" onerror="this.style.background='linear-gradient(135deg, #e94560 0%, #ff6b6b 100%)'; this.alt='Image unavailable';">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><button class="bg-white text-gray-900 px-6 py-2.5 rounded-full font-semibold hover:bg-gray-100 transition-colors template-select" data-template="modern">Select</button>
+          </div>
+         </div>
+        </div><!-- Template 3 -->
+        <div class="carousel-card flex-shrink-0 w-60 group cursor-pointer">
+         <div class="h-80 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:scale-105 relative bg-white border border-gray-200"><img src="t_C.jpg" alt="Vintage Royal Template" loading="lazy" class="w-full h-full object-cover" onerror="this.style.background='linear-gradient(135deg, #e94560 0%, #ff6b6b 100%)'; this.alt='Image unavailable';">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><button class="bg-white text-gray-900 px-6 py-2.5 rounded-full font-semibold hover:bg-gray-100 transition-colors template-select" data-template="vintage">Select</button>
+          </div>
+         </div>
+        </div><!-- Template 4 -->
+        <div class="carousel-card flex-shrink-0 w-60 group cursor-pointer">
+         <div class="h-80 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:scale-105 relative bg-white border border-gray-200"><img src="t_D.png" alt="Colorful Vibrant Template" loading="lazy" class="w-full h-full object-cover" onerror="this.style.background='linear-gradient(135deg, #e94560 0%, #ff6b6b 100%)'; this.alt='Image unavailable';">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><button class="bg-white text-gray-900 px-6 py-2.5 rounded-full font-semibold hover:bg-gray-100 transition-colors template-select" data-template="vibrant">Select</button>
+          </div>
+         </div>
+        </div><!-- Template 5 -->
+        <div class="carousel-card flex-shrink-0 w-60 group cursor-pointer">
+         <div class="h-80 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:scale-105 relative bg-white border border-gray-200"><img src="t_E.jpg" alt="Professional Premium Template" loading="lazy" class="w-full h-full object-cover" onerror="this.style.background='linear-gradient(135deg, #e94560 0%, #ff6b6b 100%)'; this.alt='Image unavailable';">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><button class="bg-white text-gray-900 px-6 py-2.5 rounded-full font-semibold hover:bg-gray-100 transition-colors template-select" data-template="professional">Select</button>
+          </div>
+         </div>
+        </div><!-- Template 6 -->
+        <div class="carousel-card flex-shrink-0 w-60 group cursor-pointer">
+         <div class="h-80 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:scale-105 relative bg-white border border-gray-200"><img src="t_F.jpg" alt="Artistic Creative Template" loading="lazy" class="w-full h-full object-cover" onerror="this.style.background='linear-gradient(135deg, #e94560 0%, #ff6b6b 100%)'; this.alt='Image unavailable';">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><button class="bg-white text-gray-900 px-6 py-2.5 rounded-full font-semibold hover:bg-gray-100 transition-colors template-select" data-template="artistic">Select</button>
+          </div>
+         </div>
+        </div><!-- Template 7 -->
+        <div class="carousel-card flex-shrink-0 w-60 group cursor-pointer">
+         <div class="h-80 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:scale-105 relative bg-white border border-gray-200"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&amp;h=400&amp;fit=crop" alt="Elegant Gold Template" loading="lazy" class="w-full h-full object-cover" onerror="this.style.background='linear-gradient(135deg, #e94560 0%, #ff6b6b 100%)'; this.alt='Image unavailable';">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><button class="bg-white text-gray-900 px-6 py-2.5 rounded-full font-semibold hover:bg-gray-100 transition-colors template-select" data-template="gold">Select</button>
+          </div>
+         </div>
+        </div><!-- Template 8 -->
+        <div class="carousel-card flex-shrink-0 w-60 group cursor-pointer">
+         <div class="h-80 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:scale-105 relative bg-white border border-gray-200"><img src="https://images.unsplash.com/photo-1534536281715-c75f046a189a?w=300&amp;h=400&amp;fit=crop" alt="Contemporary Blue Template" loading="lazy" class="w-full h-full object-cover" onerror="this.style.background='linear-gradient(135deg, #e94560 0%, #ff6b6b 100%)'; this.alt='Image unavailable';">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><button class="bg-white text-gray-900 px-6 py-2.5 rounded-full font-semibold hover:bg-gray-100 transition-colors template-select" data-template="blue">Select</button>
+          </div>
+         </div>
+        </div><!-- Template 9 -->
+        <div class="carousel-card flex-shrink-0 w-60 group cursor-pointer">
+         <div class="h-80 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:scale-105 relative bg-white border border-gray-200"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=300&amp;h=400&amp;fit=crop" alt="Romantic Rose Template" loading="lazy" class="w-full h-full object-cover" onerror="this.style.background='linear-gradient(135deg, #e94560 0%, #ff6b6b 100%)'; this.alt='Image unavailable';">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><button class="bg-white text-gray-900 px-6 py-2.5 rounded-full font-semibold hover:bg-gray-100 transition-colors template-select" data-template="rose">Select</button>
+          </div>
+         </div>
+        </div><!-- Template 10 -->
+        <div class="carousel-card flex-shrink-0 w-60 group cursor-pointer">
+         <div class="h-80 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:scale-105 relative bg-white border border-gray-200"><img src="https://images.unsplash.com/photo-1539571696357-5a69c006ae90?w=300&amp;h=400&amp;fit=crop" alt="Luxury Marble Template" loading="lazy" class="w-full h-full object-cover" onerror="this.style.background='linear-gradient(135deg, #e94560 0%, #ff6b6b 100%)'; this.alt='Image unavailable';">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><button class="bg-white text-gray-900 px-6 py-2.5 rounded-full font-semibold hover:bg-gray-100 transition-colors template-select" data-template="marble">Select</button>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Right Arrow --> <button id="carousel-next" class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-6 z-10 p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-all hover:scale-110 group">
+       <svg class="w-6 h-6 text-[#e94560] group-hover:text-[#ff6b6b]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+       </svg></button>
+     </div>
+    <section>
+
     </section>
 
     <section id="how-it-works" class="py-12 sm:py-16 lg:py-20 bg-gray-50">
@@ -114,6 +213,20 @@
 
             <div class="flex flex-col lg:flex-row gap-6 lg:gap-8">
                 <div class="lg:w-1/2 space-y-6">
+                    <!-- Photo upload section -->
+                    <div class="bg-white border-2 border-gray-200 rounded-xl p-6 mb-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Profile Photo</h3>
+                        <div class="flex items-center justify-center w-full">
+                            <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <i class="lucide lucide-camera text-gray-400 text-2xl mb-2"></i>
+                                    <p class="text-sm text-gray-500">Click to upload photo</p>
+                                </div>
+                                <input type="file" id="photoUpload" accept="image/*" class="hidden" onchange="handleImageUpload(this)" />
+                            </label>
+                        </div>
+                    </div>
+
                     <div class="bg-white border-2 border-gray-200 rounded-xl p-6">
                         <div class="flex items-center justify-between mb-4">
                             <h3 class="text-xl font-bold text-gray-900">Personal Details</h3>
@@ -302,8 +415,19 @@
                             </div>
                         </div>
                     </div>
-
-                    <button class="w-full bg-rose-600 text-white py-3 rounded-lg hover:bg-rose-700 transition font-semibold text-lg shadow-lg">Download Biodata PDF</button>
+                    <div class="flex gap-4 mb-6">
+                        <button onclick="openModal()" class="flex-1 bg-rose-600 text-white py-3 rounded-lg hover:bg-[#881337] transition font-semibold flex items-center justify-center space-x-2 shadow-sm">
+                            <i class="lucide lucide-plus-circle text-sm"></i>
+                            <span>Add Section</span>
+                        </button>
+                        <button onclick="resetForm()" class="flex-1 bg-white text-gray-700 border-2 border-gray-200 py-3 rounded-lg hover:bg-gray-50 transition font-semibold flex items-center justify-center space-x-2">
+                            <i class="lucide lucide-rotate-ccw text-sm"></i>
+                            <span>Reset Form</span>
+                        </button>
+                    </div>
+                    <button onclick="openPdfPreview()" class="w-full bg-rose-600 text-white py-3 rounded-lg hover:bg-rose-700 transition font-semibold text-lg shadow-lg">
+                        Download Biodata PDF
+                    </button>
                 </div>
 
                 <div class="lg:w-1/2 lg:sticky lg:top-24 lg:self-start">
@@ -324,28 +448,29 @@
                                 </select>
                             </div>
                         </div>
-                        <div id="preview" class="bg-white rounded-lg shadow-lg p-8 min-h-96">
-                            <div class="text-center mb-6 pb-6 border-b-2 border-rose-200">
-                                <div class="w-24 h-24 bg-rose-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                    <i class="lucide lucide-user text-rose-600 text-4xl"></i>
-                                </div>
-                                <h2 id="previewName" class="text-2xl font-bold text-gray-900 mb-1">Your Name</h2>
-                                <p id="previewDob" class="text-sm text-gray-600"></p>
+                        <div id="preview" class="bg-white rounded-lg shadow-lg p-8 min-h-[700px] bg-no-repeat bg-center bg-cover transition-all duration-300">
+    
+                        <div class="text-center mb-6 pb-6 border-b-2 border-rose-200/30">
+                            <div id="photoPreviewContainer" class="w-32 h-32 bg-rose-100 rounded-full mx-auto mb-4 flex items-center justify-center border-4 border-white shadow-md overflow-hidden">
+                                <i id="defaultUserIcon" class="lucide lucide-user text-rose-600 text-5xl"></i>
+                                <img id="userProfileImage" src="" class="hidden w-full h-full object-cover" />
+                            </div>
+                            <h2 id="previewName" class="text-2xl font-bold text-gray-900 mb-1">Your Name</h2>
+                            <p id="previewDob" class="text-sm text-gray-600"></p>
+                        </div>
+                        <div class="space-y-8">
+                            <div id="previewPersonal" class="space-y-2 flex flex-col items-center">
+                                <h3 class="text-lg font-bold text-rose-600 text-center mb-3 w-full">Personal Details</h3>
                             </div>
 
-                            <div class="space-y-6">
-                                <div id="previewPersonal" class="space-y-2">
-                                    <h3 class="text-lg font-bold text-rose-600 text-center mb-3">Personal Details</h3>
-                                </div>
-
-                                <div id="previewFamily" class="space-y-2">
-                                    <h3 class="text-lg font-bold text-rose-600 text-center mb-3">Family Details</h3>
-                                </div>
-
-                                <div id="previewContact" class="space-y-2">
-                                    <h3 class="text-lg font-bold text-rose-600 text-center mb-3">Contact Details</h3>
-                                </div>
+                            <div id="previewFamily" class="space-y-2 flex flex-col items-center">
+                                <h3 class="text-lg font-bold text-rose-600 text-center mb-3 w-full">Family Details</h3>
                             </div>
+
+                            <div id="previewContact" class="space-y-2 flex flex-col items-center">
+                                <h3 class="text-lg font-bold text-rose-600 text-center mb-3 w-full">Contact Details</h3>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -369,13 +494,10 @@
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="selectTemplate('classic-rose')">
                     <div class="relative">
                         <!-- A4 Template Preview with Background Image -->
-                        <div class="relative bg-gradient-to-br from-rose-50 to-pink-50 overflow-hidden" style="aspect-ratio: 210/297;">
-                            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('t_A.jpg');">
-                                <!-- Fallback gradient if image not loaded -->
-                                <div class="absolute inset-0 bg-gradient-to-br from-rose-100/50 to-pink-100/50"></div>
+                        <div class="relative bg-white overflow-hidden" style="aspect-ratio: 210/297;">
+                            <div class="absolute inset-0 bg-no-repeat bg-center" 
+                                style="background-image: url('t_A.jpg'); background-size: 100% 100%;">
                             </div>
-                            <!-- Overlay for better text visibility -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>
                         <!-- Popular Badge -->
                         <div class="absolute top-4 right-4 bg-rose-600 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center space-x-1 shadow-lg">
@@ -405,13 +527,10 @@
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="selectTemplate('modern-blue')">
                     <div class="relative">
                         <!-- A4 Template Preview with Background Image -->
-                        <div class="relative bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden" style="aspect-ratio: 210/297;">
-                            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('t_B.jpg');">
-                                <!-- Fallback gradient if image not loaded -->
-                                <div class="absolute inset-0 bg-gradient-to-br from-blue-100/50 to-indigo-100/50"></div>
+                        <div class="relative bg-white overflow-hidden" style="aspect-ratio: 210/297;">
+                            <div class="absolute inset-0 bg-no-repeat bg-center" 
+                                style="background-image: url('t_B.jpg'); background-size: 100% 100%;">
                             </div>
-                            <!-- Overlay for better text visibility -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>
                     </div>
                     <div class="p-6">
@@ -436,13 +555,10 @@
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 ring-2 ring-purple-200 cursor-pointer" onclick="selectTemplate('elegant-purple')">
                     <div class="relative">
                         <!-- A4 Template Preview with Background Image -->
-                        <div class="relative bg-gradient-to-br from-purple-50 to-pink-50 overflow-hidden" style="aspect-ratio: 210/297;">
-                            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('t_C.jpg');">
-                                <!-- Fallback gradient if image not loaded -->
-                                <div class="absolute inset-0 bg-gradient-to-br from-purple-100/50 to-pink-100/50"></div>
+                        <div class="relative bg-white overflow-hidden" style="aspect-ratio: 210/297;">
+                            <div class="absolute inset-0 bg-no-repeat bg-center" 
+                                style="background-image: url('t_C.jpg'); background-size: 100% 100%;">
                             </div>
-                            <!-- Overlay for better text visibility -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>
                         <!-- Premium Badge -->
                         <div class="absolute top-4 right-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center space-x-1 shadow-lg">
@@ -473,13 +589,10 @@
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 ring-2 ring-amber-200 cursor-pointer" onclick="selectTemplate('traditional-gold')">
                     <div class="relative">
                         <!-- A4 Template Preview with Background Image -->
-                        <div class="relative bg-gradient-to-br from-amber-50 to-yellow-50 overflow-hidden" style="aspect-ratio: 210/297;">
-                            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('t_D.png');">
-                                <!-- Fallback gradient if image not loaded -->
-                                <div class="absolute inset-0 bg-gradient-to-br from-amber-100/50 to-yellow-100/50"></div>
+                        <div class="relative bg-white overflow-hidden" style="aspect-ratio: 210/297;">
+                            <div class="absolute inset-0 bg-no-repeat bg-center" 
+                                style="background-image: url('t_D.png'); background-size: 100% 100%;">
                             </div>
-                            <!-- Overlay for better text visibility -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>
                         <!-- Premium Badge -->
                         <div class="absolute top-4 right-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center space-x-1 shadow-lg">
@@ -510,13 +623,10 @@
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="selectTemplate('minimalist-green')">
                     <div class="relative">
                         <!-- A4 Template Preview with Background Image -->
-                        <div class="relative bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden" style="aspect-ratio: 210/297;">
-                            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('t_E.jpg');">
-                                <!-- Fallback gradient if image not loaded -->
-                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-100/50 to-teal-100/50"></div>
+                        <div class="relative bg-white overflow-hidden" style="aspect-ratio: 210/297;">
+                            <div class="absolute inset-0 bg-no-repeat bg-center" 
+                                style="background-image: url('t_E.jpg'); background-size: 100% 100%;">
                             </div>
-                            <!-- Overlay for better text visibility -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>
                     </div>
                     <div class="p-6">
@@ -541,13 +651,10 @@
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 ring-2 ring-red-200 cursor-pointer" onclick="selectTemplate('royal-maroon')">
                     <div class="relative">
                         <!-- A4 Template Preview with Background Image -->
-                        <div class="relative bg-gradient-to-br from-red-50 to-rose-50 overflow-hidden" style="aspect-ratio: 210/297;">
-                            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('t_F.jpg');">
-                                <!-- Fallback gradient if image not loaded -->
-                                <div class="absolute inset-0 bg-gradient-to-br from-red-100/50 to-rose-100/50"></div>
+                        <div class="relative bg-white overflow-hidden" style="aspect-ratio: 210/297;">
+                            <div class="absolute inset-0 bg-no-repeat bg-center" 
+                                style="background-image: url('t_F.jpg'); background-size: 100% 100%;">
                             </div>
-                            <!-- Overlay for better text visibility -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>
                         <!-- Premium Badge -->
                         <div class="absolute top-4 right-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center space-x-1 shadow-lg">
@@ -696,6 +803,47 @@
             </div>
         </div>
     </footer>
+    <!-- modal when user clik on the add section -->
+    <div id="sectionModal" class="hidden fixed inset-0 bg-black/50 z-[60] flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Add New Section</h3>
+            <input type="text" id="newSectionName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 outline-none mb-6" placeholder="e.g., Religious Details or Hobbies">
+            <div class="flex gap-3">
+                <button onclick="closeModal()" class="flex-1 px-4 py-2 text-gray-600 font-medium">Cancel</button>
+                <button onclick="createNewSection()" class="flex-1 bg-rose-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-rose-700">Create Section</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal when user cliks on download pdf -->
+     <div id="pdfModal" class="hidden fixed inset-0 bg-black/70 z-[70] flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[95vh] overflow-hidden flex flex-col shadow-2xl">
+            <div class="p-6 border-b flex justify-between items-center bg-gray-50">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900">Final PDF Preview</h3>
+                    <p class="text-sm text-gray-500">Review your details before downloading</p>
+                </div>
+                <button onclick="closePdfModal()" class="text-gray-400 hover:text-gray-600 transition">
+                    <i class="fa-solid fa-xmark text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="flex-1 overflow-y-auto p-8 bg-gray-200 flex justify-center">
+                <div id="pdfPrintArea" class="bg-white shadow-xl origin-top">
+                    </div>
+            </div>
+
+            <div class="p-6 border-t bg-white flex gap-4">
+                <button onclick="closePdfModal()" class="flex-1 px-6 py-3 border-2 border-gray-200 rounded-lg font-semibold text-gray-600 hover:bg-gray-50 transition">
+                    Cancel
+                </button>
+                <button onclick="generatePDF()" class="flex-1 px-6 py-3 bg-[#4c0519] text-white rounded-lg font-bold hover:bg-rose-900 transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-download"></i>
+                    Download PDF
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script>
         let currentSlide = 0;
@@ -901,6 +1049,24 @@
                     contactSection.appendChild(fieldDiv);
                 }
             });
+
+            // At the bottom of updatePreview()
+            const allFieldContainers = document.querySelectorAll('[id$="Fields"]');
+            allFieldContainers.forEach(container => {
+                const sId = container.id.replace('Fields', '');
+                if (['personal', 'family', 'contact'].includes(sId)) return;
+
+                const pContent = document.getElementById(`preview${sId}Content`);
+                if (pContent) {
+                    pContent.innerHTML = '';
+                    container.querySelectorAll('[data-field]').forEach(f => {
+                        if (f.value) {
+                            // Ensure createRow is defined (the helper we made earlier)
+                            pContent.appendChild(createRow(f.getAttribute('data-label'), f.value));
+                        }
+                    });
+                }
+            });
         }
 
         startAutoScroll();
@@ -919,6 +1085,188 @@
         observer.observe(templatesSection);
 
         updatePreview();
+
+        function handleImageUpload(input) {
+            const file = input.files[0];
+            const icon = document.getElementById('defaultUserIcon');
+            const imgPreview = document.getElementById('userProfileImage');
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    // Set the image source to the file data
+                    imgPreview.src = e.target.result;
+                    
+                    // Show the image and hide the icon
+                    imgPreview.classList.remove('hidden');
+                    icon.classList.add('hidden');
+                }
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Modal Logic
+        function openModal() {
+            document.getElementById('sectionModal').classList.remove('hidden');
+            document.getElementById('newSectionName').focus();
+        }
+
+        function closeModal() {
+            document.getElementById('sectionModal').classList.add('hidden');
+            document.getElementById('newSectionName').value = '';
+        }
+
+        // Create New Section Dynamic Logic
+        function createNewSection() {
+            const name = document.getElementById('newSectionName').value.trim();
+            if (!name) return;
+
+            // Create a clean ID (e.g., "Religious Details" becomes "religious_details")
+            const sectionId = name.toLowerCase().replace(/\s+/g, '_');
+            
+            // FIND THE CONTAINER SAFELY:
+            // We go up from 'personalFields' to the white card, then to the main column
+            const personalFields = document.getElementById('personalFields');
+            const formColumn = personalFields.parentElement.parentElement; 
+            
+            // 1. Create the Form UI (The card on the left)
+            const newSectionDiv = document.createElement('div');
+            newSectionDiv.className = 'bg-white border-2 border-gray-200 rounded-xl p-6 mt-6 custom-section';
+            newSectionDiv.id = `section_container_${sectionId}`;
+            newSectionDiv.innerHTML = `
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-gray-900">${name}</h3>
+                    <div class="flex items-center gap-2">
+                        <button onclick="addField('${sectionId}')" class="text-rose-600 hover:text-rose-700 transition flex items-center space-x-1 text-sm font-medium">
+                            <i class="lucide lucide-plus-circle text-xs"></i>
+                            <span>Add Field</span>
+                        </button>
+                        <button onclick="deleteSection('${sectionId}')" class="text-red-400 hover:text-red-600 transition">
+                            <i class="fa fa-trash text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="${sectionId}Fields" class="space-y-4"></div>
+            `;
+
+            // Insert it before the "Add Section / Reset" button row
+            const actionButtonsRow = document.querySelector('button[onclick="openModal()"]').parentElement;
+            formColumn.insertBefore(newSectionDiv, actionButtonsRow);
+
+            // 2. Create the Preview UI (The section on the right)
+            const previewSpace = document.querySelector('#preview .space-y-8');
+            const newPreviewDiv = document.createElement('div');
+            newPreviewDiv.className = 'w-full custom-preview-section';
+            newPreviewDiv.id = `preview_section_${sectionId}`;
+            newPreviewDiv.innerHTML = `
+                <h3 class="preview-title text-lg font-bold text-rose-600 text-center mb-3">${name}</h3>
+                <div id="preview${sectionId}Content" class="space-y-2 max-w-md mx-auto"></div>
+            `;
+            previewSpace.appendChild(newPreviewDiv);
+
+            closeModal();
+        }
+
+        // Add this helper function to delete a section if needed
+        function deleteSection(sectionId) {
+            if (confirm("Delete this entire section?")) {
+                document.getElementById(`section_container_${sectionId}`).remove();
+                document.getElementById(`preview_section_${sectionId}`).remove();
+                updatePreview();
+            }
+        }
+
+        // Reset Form Logic
+        function resetForm() {
+            if (!confirm("Are you sure you want to clear all data?")) return;
+
+            // Clear all standard inputs
+            document.querySelectorAll('input, textarea').forEach(el => el.value = '');
+            
+            // Clear Photo
+            const icon = document.getElementById('defaultUserIcon');
+            const imgPreview = document.getElementById('userProfileImage');
+            if(imgPreview) {
+                imgPreview.src = '';
+                imgPreview.classList.add('hidden');
+                icon.classList.remove('hidden');
+            }
+
+            // Remove Custom Sections
+            document.querySelectorAll('.custom-section').forEach(el => el.remove());
+            
+            // Refresh Preview
+            updatePreview();
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+            
+            // Toggle the 'hidden' class
+            const isHidden = mobileMenu.classList.contains('hidden');
+            
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                // Change icon to 'X' (Close)
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                mobileMenu.classList.add('hidden');
+                // Change icon back to 'Bars' (Hamburger)
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        }
+
+        //pdf dowmload functionality
+        function openPdfPreview() {
+            const previewElement = document.getElementById('preview');
+            const printArea = document.getElementById('pdfPrintArea');
+            
+            // Clone the current live preview
+            const clone = previewElement.cloneNode(true);
+            
+            // Reset any temporary styling classes if necessary
+            clone.style.width = "210mm";  // Standard A4 Width
+            clone.style.minHeight = "297mm"; // Standard A4 Height
+            clone.classList.remove('rounded-lg', 'shadow-lg'); // Remove UI-specific styles for the PDF
+            
+            // Clear the print area and append the clone
+            printArea.innerHTML = '';
+            printArea.appendChild(clone);
+            
+            // Show the modal
+            document.getElementById('pdfModal').classList.remove('hidden');
+        }
+
+        function closePdfModal() {
+            document.getElementById('pdfModal').classList.add('hidden');
+        }
+
+        function generatePDF() {
+            const element = document.getElementById('pdfPrintArea').firstChild;
+            const name = document.getElementById('previewName').textContent || 'Biodata';
+            
+            const opt = {
+                margin: 0,
+                filename: `${name}_Biodata.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2, // High resolution
+                    useCORS: true, 
+                    letterRendering: true 
+                },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Start the download
+            html2pdf().set(opt).from(element).save().then(() => {
+                closePdfModal();
+            });
+        }
     </script>
 </body>
 </html>
